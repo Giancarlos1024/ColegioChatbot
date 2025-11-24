@@ -74,7 +74,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/roles', [UsuarioWebController::class, 'roles'])->name('roles.view');
     Route::get('/datos/dashboard', [DashboardController::class, 'getdatos']);
     // LISTADO ESPACIOS PARA HORARIOS
-    Route::get('/espacio', [EspacioController::class, 'index'])->name('espacio.index');
+    Route::get('/espacio', [EspacioController::class, 'index'])->name('espacio.view');
+
 
     // LISTADO EMPLEADOS PARA HORARIOS
     Route::get('/empleado', [EmployeeController::class, 'index'])->name('empleado.index');
