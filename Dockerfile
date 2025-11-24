@@ -1,6 +1,23 @@
+# ------------------------------------------------------
+# 1) Stage de Node para compilar Vite
+# ------------------------------------------------------
+FROM node:18-alpine AS node-build
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . ./
+RUN npm run build   # <-- COMPILA VITE A /public/build
+
+
+# ------------------------------------------------------
+# 2) Stage de PHP + Nginx + Laravel
+# ------------------------------------------------------
 FROM php:8.3-fpm
 
-# 1) Paquetes de sistema
+# Paquetes del sistema
 RUN apt-get update && apt-get install -y \
     nginx \
     supervisor \
@@ -18,31 +35,31 @@ RUN apt-get update && apt-get install -y \
  && docker-php-ext-install pdo_pgsql zip gd \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# 2) Composer
+# Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# 3) Código Laravel
+# Código Laravel
 WORKDIR /var/www
 COPY . .
 
-# 4) Nginx config  👈 AQUÍ EL CAMBIO IMPORTANTE
-# Borramos el sitio por defecto y usamos el nuestro
-RUN rm -f /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default || true
+# 📌  COPIAR EL BUILD DEL FRONTEND
+COPY --from=node-build /app/public/build ./public/build
 
-# Copiamos tu configuración como sitio principal
+# Configuración Nginx
+RUN rm -f /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default || true
 COPY docker/nginx/default.conf /etc/nginx/sites-available/laravel.conf
 RUN ln -s /etc/nginx/sites-available/laravel.conf /etc/nginx/sites-enabled/laravel.conf
 
-# 5) Supervisord config
+# Supervisord
 COPY docker/php/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# 6) Dependencias de Laravel
+# Dependencias Laravel
 RUN composer install --no-dev --optimize-autoloader
 
-# 7) Permisos
+# Permisos
 RUN chmod -R 775 storage bootstrap/cache || true
 
-# 8) Cache de config y rutas (con || true por si falla en build)
+# Cache de config y rutas
 RUN php artisan config:clear || true \
  && php artisan config:cache || true \
  && php artisan route:clear || true \
@@ -50,5 +67,4 @@ RUN php artisan config:clear || true \
 
 EXPOSE 80
 
-# 9) Arrancar supervisord (nginx + php-fpm)
 CMD ["/usr/bin/supervisord","-c","/etc/supervisor/conf.d/supervisord.conf"]
