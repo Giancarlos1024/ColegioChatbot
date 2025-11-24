@@ -25,9 +25,13 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www
 COPY . .
 
-# 4) Nginx config  👈 IMPORTANTE
-# ajusta la ruta si tu archivo está en otra carpeta
-COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
+# 4) Nginx config  👈 AQUÍ EL CAMBIO IMPORTANTE
+# Borramos el sitio por defecto y usamos el nuestro
+RUN rm -f /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default || true
+
+# Copiamos tu configuración como sitio principal
+COPY docker/nginx/default.conf /etc/nginx/sites-available/laravel.conf
+RUN ln -s /etc/nginx/sites-available/laravel.conf /etc/nginx/sites-enabled/laravel.conf
 
 # 5) Supervisord config
 COPY docker/php/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
