@@ -40,8 +40,7 @@ Route::middleware('auth')->group(function () {
         ->names('api.alerta');
 
     Route::apiResource('horario', ScheduleController::class)
-        ->names('api.horario');   // 👈 ya no choca con web.php
-
+        ->names('api.horario');  
     Route::apiResource('taller', TallerController::class)
         ->names('api.taller');
     
