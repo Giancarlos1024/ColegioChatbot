@@ -1,7 +1,8 @@
 # ------------------------------------------------------
 # 1) Stage de Node para compilar Vite
 # ------------------------------------------------------
-FROM node:18-alpine AS node-build
+FROM node:20-alpine AS node-build
+
 
 WORKDIR /app
 
