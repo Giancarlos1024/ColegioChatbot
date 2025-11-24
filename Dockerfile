@@ -1,6 +1,6 @@
 FROM php:8.3-fpm
 
-# 1) Actualizar e instalar dependencias
+# 1) Paquetes de sistema
 RUN apt-get update && apt-get install -y \
     nginx \
     supervisor \
@@ -15,37 +15,36 @@ RUN apt-get update && apt-get install -y \
     zip \
     git \
  && docker-php-ext-configure gd --with-freetype --with-jpeg \
- && docker-php-ext-install pdo_pgsql pgsql zip gd \
+ && docker-php-ext-install pdo_pgsql zip gd \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# 2) Instalar Composer
+# 2) Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# 3) Directorio de trabajo
+# 3) Código Laravel
 WORKDIR /var/www
-
-# 4) Copiar todo el proyecto
 COPY . .
 
-# 5) Copiar config de nginx y supervisor
-#   (asegúrate de que estos paths existen en tu repo)
+# 4) Nginx config  👈 IMPORTANTE
+# ajusta la ruta si tu archivo está en otra carpeta
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
-COPY docker/php/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# 6) Instalar dependencias de Laravel
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# 5) Supervisord config
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# 7) Permisos para storage y cache
+# 6) Dependencias de Laravel
+RUN composer install --no-dev --optimize-autoloader
+
+# 7) Permisos
 RUN chmod -R 775 storage bootstrap/cache || true
 
-# 8) Limpiar y cachear configuración y rutas (si falla, no rompe el build)
+# 8) Cache de config y rutas (con || true por si falla en build)
 RUN php artisan config:clear || true \
  && php artisan config:cache || true \
  && php artisan route:clear || true \
  && php artisan route:cache || true
 
-# 9) Exponer puerto 80 (nginx)
 EXPOSE 80
 
-# 10) Iniciar supervisor (que levanta nginx + php-fpm)
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# 9) Arrancar supervisord (nginx + php-fpm)
+CMD ["/usr/bin/supervisord","-c","/etc/supervisor/conf.d/supervisord.conf"]
