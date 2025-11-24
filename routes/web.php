@@ -78,7 +78,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     // LISTADO EMPLEADOS PARA HORARIOS
-    Route::get('/empleado', [EmployeeController::class, 'index'])->name('empleado.index');
+   // solo para la vista del módulo empleados (frontend)
+    Route::get('/empleado', [EmployeeController::class, 'index'])->name('empleado.view');
+
 
     Route::get('/asistente', [AsistenteWebController::class, 'index']);
 
