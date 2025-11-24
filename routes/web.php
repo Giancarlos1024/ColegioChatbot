@@ -66,11 +66,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 
     #VISTAS DEL FRONTEND
-    Route::get('/horarios', [ScheduleWebController::class, 'index'])->name('index.view');
-    Route::get('/talleres', [TallerWebController::class, 'index'])->name('index.view');
-    Route::get('/alertas', [AlertWebController::class, 'index'])->name('index.view');
-    Route::get('/config_alertas', [ConfigAlertWebController::class, 'index'])->name('index.view');
-    Route::get('/usuario', [UsuarioWebController::class, 'index'])->name('index.view');
+    Route::get('/horarios', [ScheduleWebController::class, 'index']);
+    Route::get('/talleres', [TallerWebController::class, 'index']);
+    Route::get('/alertas', [AlertWebController::class, 'index']);
+    Route::get('/config_alertas', [ConfigAlertWebController::class, 'index']);
+    Route::get('/usuario', [UsuarioWebController::class, 'index']);
     Route::get('/roles', [UsuarioWebController::class, 'roles'])->name('roles.view');
     Route::get('/datos/dashboard', [DashboardController::class, 'getdatos']);
     // LISTADO ESPACIOS PARA HORARIOS
@@ -79,7 +79,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // LISTADO EMPLEADOS PARA HORARIOS
     Route::get('/empleado', [EmployeeController::class, 'index'])->name('empleado.index');
 
-    Route::get('/asistente', [AsistenteWebController::class, 'index'])->name('index.view');
+    Route::get('/asistente', [AsistenteWebController::class, 'index']);
 
 
     // 👇 NUEVO endpoint solo para el Asistente IA
