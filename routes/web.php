@@ -160,7 +160,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('panel/reports')->group(function () {
 
         #EXPORTACION Y IMPORTACION ESPACIOS
-        Route::get('/export-excel-spaces', [TallerController::class, 'exportExcel'])->name('export-excel-spaces');
+        Route::get('/export-excel-spaces', [SpaceWebController::class, 'exportExcel']);
+
         Route::get('/export-pdf-spaces', [SpacePDFController::class, 'exportPDF'])->name('export-pdf-spaces');
         // Ruta para importar desde Excel
         //Route::post('/import-excel-spaces', [SpaceController::class, 'importExcel'])->name('import-excel-spaces');

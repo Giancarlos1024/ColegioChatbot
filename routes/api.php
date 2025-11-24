@@ -13,6 +13,7 @@ use App\Http\Controllers\Reportes\EmployeeTypePDFController;
 use App\Http\Controllers\Reportes\EmployeePDFController;
 use App\Http\Controllers\Reportes\SchedulePDFController;
 use App\Http\Controllers\Reportes\SpacePDFController;
+use App\Http\Controllers\Reportes\TallerPDFController;
 use App\Http\Controllers\Api\VerificarAccesoController;
 use App\Http\Controllers\Api\InscripcionController;
 use App\Models\EmployeeType;
