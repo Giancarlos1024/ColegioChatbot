@@ -183,42 +183,61 @@ onMounted(() => {
                     <!-- Reseña Histórica -->
                     <div class="text-gray-700 dark:text-gray-300 leading-relaxed text-left space-y-4">
                         <h3 class="text-lg font-semibold text-blue-800 dark:text-blue-200">Reseña Histórica</h3>
+
                         <p>
-                            La Institución Educativa INIF Nº 48, fue creada por Ley Nº 14115 del 15 de Junio de 1962, 
-                            como integrante de la Gran Unidad Escolar de Mujeres "Las Capullanas", iniciando sus labores el 1º de Marzo de 1965, 
-                            con una sección de 65 alumnas matriculadas en el 1er.Gdo. de Educación Secundaria, siendo su primera Directora la Sra. Iluminada Jaramillo de Mendoza.
+                            La Institución Educativa INIF Nº 48 fue creada por Ley Nº 14115 del 15 de Junio de 1962,
+                            como integrante de la Gran Unidad Escolar de Mujeres "Las Capullanas", iniciando sus labores
+                            el 1º de Marzo de 1965 con una sección de 65 alumnas matriculadas en el 1er. Grado de Educación
+                            Secundaria, siendo su primera Directora la Sra. Iluminada Jaramillo de Mendoza.
                         </p>
+
                         <p>
-                            La Institución Educativa INIF Nº 48 a lo largo de su trayectoria educativa, ha sido dirigida por personal idóneo, 
-                            destacando por su infalible lucha por el bienestar del alumnado, quienes al frente de la Dirección fueron construyendo 
+                            A lo largo de su trayectoria educativa, ha sido dirigida por personal idóneo, destacando por su
+                            infalible lucha por el bienestar del alumnado, quienes al frente de la Dirección fueron construyendo
                             el progreso, prestigio y sitial del que hoy goza nuestra Institución Educativa.
                         </p>
+
                         <p>
-                            En 1995, INFES, remodeló la infraestructura acorde a nuestra era moderna, cuenta con 24 aulas, talleres de Áreas Técnicas, 
-                            Laboratorio de Ciencias, Laboratorio de Innovaciones Pedagógicas (Aula Huascarán).
+                            En 1995, INFES remodeló la infraestructura acorde a nuestra era moderna. Cuenta con 24 aulas,
+                            talleres de Áreas Técnicas, Laboratorio de Ciencias y Laboratorio de Innovaciones Pedagógicas
+                            (Aula Huascarán).
                         </p>
+
                         <p>
-                            Como Institución Educativa Estatal brinda servicio educativo en Áreas Técnicas, Ciencias y Humanidades a nuestras alumnas 
-                            a través de una educación de calidad basada en la práctica de valores como: <strong>responsabilidad, trabajo, fe, equidad, tolerancia y flexibilidad</strong>.
+                            Como Institución Educativa Estatal brinda servicio educativo en Áreas Técnicas, Ciencias y Humanidades
+                            a nuestras alumnas a través de una educación de calidad basada en valores como:
+                            <strong>responsabilidad, trabajo, fe, equidad, tolerancia y flexibilidad</strong>.
                         </p>
+
                         <p>
-                            En el presente año a Institución Educativa INIF Nº 48 se encuentra bajo la dirección de la Sra. Directora <strong>Alicia Purizaca Furlong</strong>, 
-                            teniendo como Sub – Director de Formación General al Profesor <strong>Felix Atoche Núnjar</strong>, la Profesora <strong>Carmen Girón Jaramillo</strong> como Jefa de Talleres 
-                            y al Profesor <strong>Darwin Gutiérrez Chuyes</strong> como coordinador de la Sala de Innovación Pedagógica cuenta con <strong>44 Docentes, 09 Administrativos, 03 Auxiliares de Educación</strong>, 
-                            para atender a <strong>1122 alumnas distribuidas en 24 secciones del 1º al 5º de Secundaria</strong>.
-                     <p>
-                        <strong> Actualmente es dirigido por Director Percy Távara Armestar, en la modalidad Jornada Escolar Completa, brindando servicio educativo de calidad y práctica de valores Justicia, Respeto, Responsabilidad, Honestidad,</strong>
-                     </p>
+                            En el presente año, la Institución Educativa INIF Nº 48 se encuentra bajo la dirección de la
+                            Sra. Directora <strong>Alicia Purizaca Furlong</strong>, teniendo como Subdirector de Formación General
+                            al Profesor <strong>Felix Atoche Núnjar</strong>, como Jefa de Talleres a la Profesora
+                            <strong>Carmen Girón Jaramillo</strong> y como coordinador de la Sala de Innovación Pedagógica al
+                            Profesor <strong>Darwin Gutiérrez Chuyes</strong>. La institución cuenta con
+                            <strong>44 Docentes, 09 Administrativos y 03 Auxiliares de Educación</strong> para atender a
+                            <strong>1122 alumnas distribuidas en 24 secciones del 1º al 5º de Secundaria</strong>.
+                        </p>
+
+                        <p>
+                            <strong>
+                                Actualmente es dirigida por el Director Percy Távara Armestar, en la modalidad Jornada Escolar
+                                Completa, brindando servicio educativo de calidad y promoviendo los valores de Justicia, Respeto,
+                                Responsabilidad y Honestidad.
+                            </strong>
                         </p>
                     </div>
 
                     <!-- Imágenes de la institución -->
                     <div class="mt-10 flex justify-center space-x-4">
-                        <img src="/imagenes/admin.png" alt="Insignia de la Institución" class="w-24 h-24 rounded-full shadow-lg object-cover"/>
-                        <img src="/imagenes/inif.jpg" alt="INIF N° 48" class="w-32 h-24 rounded-lg shadow-lg object-cover"/>
+                        <img src="/imagenes/admin.png" alt="Insignia de la Institución"
+                            class="w-24 h-24 rounded-full shadow-lg object-cover" />
+                        <img src="/imagenes/inif.jpg" alt="INIF N° 48"
+                            class="w-32 h-24 rounded-lg shadow-lg object-cover" />
                     </div>
                 </div>
             </div>
+
         </div>
     </AppLayout>
 </template>
