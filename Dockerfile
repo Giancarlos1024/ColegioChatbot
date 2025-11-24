@@ -30,7 +30,7 @@ COPY . .
 COPY docker/nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # 5) Supervisord config
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY docker/php/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # 6) Dependencias de Laravel
 RUN composer install --no-dev --optimize-autoloader
