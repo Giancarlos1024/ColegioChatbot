@@ -98,7 +98,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // TALLER -> BACKEND
     Route::prefix('taller')->group(function () {
-        Route::get('/', [TallerController::class, 'index'])->name('taller.index');
+        Route::get('/', [TallerController::class, 'index'])->name('web.taller.index');
+
         Route::post('/', [TallerController::class, 'store'])->name('talleres.store');
         Route::get('/{taller}', [TallerController::class, 'show'])->name('talleres.show');
         Route::put('/{taller}', [TallerController::class, 'update'])->name('talleres.update');
