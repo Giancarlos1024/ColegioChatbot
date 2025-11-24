@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\EmployeeTypeController;
 use App\Http\Controllers\Api\MovementController;
 use App\Http\Controllers\Api\ScheduleController;
 use App\Http\Controllers\Api\TallerController;
+use App\Http\Controllers\Api\EspacioController;   // 👈 AÑADIR ESTA
 use App\Http\Controllers\Reportes\EmployeeTypePDFController;
 use App\Http\Controllers\Reportes\EmployeePDFController;
 use App\Http\Controllers\Reportes\SchedulePDFController;
