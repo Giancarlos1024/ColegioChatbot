@@ -106,8 +106,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::delete('/{taller}', [TallerController::class, 'destroy'])->name('talleres.destroy');
     });
 
-    Route::post('/inscripciones', [InscripcionController::class, 'store'])
-        ->name('inscripciones.store');
+    Route::post('/inscripciones/web', [InscripcionController::class, 'store'])
+     ->name('inscripciones.store');
+
         
     #HORARIO => BACKEND
     Route::prefix('horario')->group(function () {

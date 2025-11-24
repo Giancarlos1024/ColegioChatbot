@@ -57,7 +57,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/alertas/export-excel', [AlertController::class, 'exportExcel']);
     
     // Exportación a PDF
-    Route::get('/talleres/export-pdf', [SpacePDFController::class, 'exportPDF']);
+    Route::get('/talleres/export-pdf', [TallerPDFController::class, 'exportPDF']);
+
     Route::get('/horarios/export-pdf', [SchedulePDFController::class, 'exportPDF']);
     Route::get('/tipos_empleados/export-pdf', [EmployeeTypePDFController::class, 'exportPDF']);
     Route::get('/empleados/export-pdf', [EmployeePDFController::class, 'exportPDF']);
