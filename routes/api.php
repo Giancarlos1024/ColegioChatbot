@@ -20,14 +20,30 @@ Route::get('/verificar-acceso', function () {
     return response()->json(['mensaje' => 'Ruta funcionando, usa POST para enviar datos.']);
 });
 Route::middleware('auth')->group(function () {
-    Route::apiResource('tipos_empleados', EmployeeTypeController::class);
-    Route::apiResource('empleado', EmployeeController::class);
-    Route::apiResource('espacio', EspacioController::class);
-    Route::apiResource('config_alertas', ConfigAlertController::class);
-    Route::apiResource('movimiento', MovementController::class);
-    Route::apiResource('alerta', AlertController::class);
-    Route::apiResource('horario', ScheduleController::class);
-    Route::apiResource('taller', TallerController::class);
+     Route::apiResource('tipos_empleados', EmployeeTypeController::class)
+        ->names('api.tipos_empleados');
+
+    Route::apiResource('empleado', EmployeeController::class)
+        ->names('api.empleado');
+
+    Route::apiResource('espacio', EspacioController::class)
+        ->names('api.espacio');
+
+    Route::apiResource('config_alertas', ConfigAlertController::class)
+        ->names('api.config_alertas');
+
+    Route::apiResource('movimiento', MovementController::class)
+        ->names('api.movimiento');
+
+    Route::apiResource('alerta', AlertController::class)
+        ->names('api.alerta');
+
+    Route::apiResource('horario', ScheduleController::class)
+        ->names('api.horario');   // 👈 ya no choca con web.php
+
+    Route::apiResource('taller', TallerController::class)
+        ->names('api.taller');
+    
     //Route::apiResource('caja', CajaController::class);
 
     #EXPORT API
@@ -54,7 +70,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/tipos_empleados/import-excel', [EmployeeTypeController::class, 'importExcel']);
     Route::post('/empleados/import-excel', [EmployeeController::class, 'importExcel']);
     // 👉 NUEVA RUTA DE INSCRIPCIÓN
-    Route::post('/inscripciones', [InscripcionController::class, 'store']);
+   // 👉 NUEVA RUTA DE INSCRIPCIÓN
+    Route::post('/inscripciones', [InscripcionController::class, 'store'])
+        ->name('api.inscripciones.store');
     //Route::post('/movimientos/import-excel', [MovementController::class, 'importExcel']);
 });
 
